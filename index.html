@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Playlist Switcher</title>
+    <style>
+        body {
+            font-family: 'Arial, sans-serif';
+            background-color: #1f2531;
+            color: #e1e1e1;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 1000px;
+            background-color: #2f4054;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .group-title {
+            cursor: pointer;
+            padding: 10px;
+            background-color:#1f2531;
+            color: #e1e1e1;
+            text-align: left;
+            border: none;
+            width: 100%;
+            outline: none;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .group-title:hover {
+            background-color: #232a37;
+            text-decoration: underline;
+            border-radius: 10px;
+        }
+
+        .group-title-null {
+            cursor: pointer;
+            padding: 10px;
+            background-color:#1f2531;
+            color: #b48282;
+            text-align: left;
+            border: none;
+            width: 100%;
+            outline: none;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .group-title-null:hover {
+            background-color: #232a37;
+            text-decoration: underline;
+            border-radius: 10px;
+        }
+        .group-content {
+            display: none;
+            padding-left: 10px;
+        }
+        .group-content button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            background-color: #1f2531;
+            color: #e1e1e1;
+            cursor: pointer;
+            text-align: left;
+            border-radius: 10px;
+        }
+        .group-content button:hover {
+            background-color: #232a37;
+            text-decoration: underline;
+            border-radius: 10px;
+        }
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .spotify-player {
+            width: 100%;
+            height: 580px;
+            border: none;
+        }
+        .info-box {
+        background-color: #2f4054;
+        color: #e1e1e1;
+        padding: 20px;
+        margin-top: 20px;
+        border-top: 2px solid #444;
+        font-family: Arial, sans-serif;
+        line-height: 1.5;
+        font-size: 14px;
+        border-radius: 10px;
+        }
+        
+        /* Title Styling */
+        .title {
+            font-family: 'Uncial Antiqua', cursive;
+            color: #dfc7ae;
+            text-align: left;
+            font-size: 56px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        .active-button {
+        background-color: #dfc7ae;
+        color: #172029;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1 class="title">Set The Mood</h1>
+        <iframe id="spotify-player" class="spotify-player" src="https://open.spotify.com/embed/playlist/1YUe3UKAqhD7AvGfGymuWI?autoplay=0" allow="encrypted-media"></iframe>
+        <div class="info-box">
+            <h2>Perfect Roleplay Moods for your game!</h2>
+            <p>We've scoured the far realms to find music that will elevate any roleplaying game. Each playlist maintains a consistent energy and tone without being overly distracting. We've carefully avoided recognizable themes, prioritizing the work of smaller independent composers over blockbuster soundtracks and AAA game scores (though we've sprinkled in a few of our favorites for good measure ;) The playlists are sorted by themeatic locale named after similar regions in our own original DnD Wyrld.
+ 
+            </p>
+            <p>We're always on the lookout for more hidden gems from independent artists to enrich our playlists, so please send us your recommendations so we can all support one another!
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="sidebar">
+    <button class="group-title" onclick="toggleGroup('generalFantasyGroup')">Generic Fantasy Wyrld</button>
+        <div id="generalFantasyGroup" class="group-content">
+            <button onclick="changePlaylist('1ea17K1nE7fEX70nIMjDqT', this)">Peaceful</button>
+            <button onclick="changePlaylist('2nbeP4Rre3m0zxYLo54QTl', this)">Tension</button>
+            <button onclick="changePlaylist('13u4gzKCd1WaevD0DtKlLD', this)">Combat Horror</button>
+            <button onclick="changePlaylist('6JmfCGjYCq5tehntG8Surq', this)">Combat Bar Fight</button>
+            <button onclick="changePlaylist('6qXjvqr5P7EhaMqQ79vkUg', this)">Sky Battles</button>
+            <button onclick="changePlaylist('6gG7jdzlSyNxq4NjZ1x0oW', this)">Chases</button>
+            <button onclick="changePlaylist('3Delm05gkx0ZPEZu7Rk53D', this)">Sombre</button>
+            <button onclick="changePlaylist('0ZAaLNP1Axcl5AhJMSivCR', this)">Towns</button>
+        </div>
+    <button class="group-title" onclick="toggleGroup('greyfallCityGroup')">The City of Greyfall</button>
+        <div id="greyfallCityGroup" class="group-content">
+            <button onclick="changePlaylist('1YUe3UKAqhD7AvGfGymuWI', this)">Peaceful</button>
+            <button onclick="changePlaylist('3X0IjsjrQUX4fHyQOVEnSe', this)">Tension</button>
+            <button onclick="changePlaylist('2I9OifXRFgEur2UCIuPUGf', this)">Combat</button>
+            <button onclick="changePlaylist('2beWi8n7abCEGvXqp4s7N0', this)">Crime</button>
+            <button onclick="changePlaylist('7lJjhHgvGPa6VZWtVbdfkU', this)">Investigation</button>
+            <button onclick="changePlaylist('35oxrKenVuLxu8CcSPWIpo', this)">Sombre</button>
+            <button onclick="changePlaylist('00yRGLi1BXNCn1rtoAckdx', this)">Romance</button>
+            <button onclick="changePlaylist('3mM5niJAb5BX18kKYH64T4', this)">Big City Boys and Girls</button>            
+        </div>
+    <button class="group-title" onclick="toggleGroup('imaEktuGroup')">Desert of Ima Ektu</button>
+        <div id="imaEktuGroup" class="group-content">
+            <button onclick="changePlaylist('6DH4OfukW4uo4XkfBiOAV0', this)">Peaceful</button>
+            <button onclick="changePlaylist('5bQgi15PeUrROgNiZYReXu', this)">Tension</button>
+            <button onclick="changePlaylist('7aUst22qJIqBxsIMNo9ba8', this)">Combat</button>
+            <button onclick="changePlaylist('6RVAORIrWK71unKMuXM9eZ', this)">Heist</button>
+            <button onclick="changePlaylist('5FMklSlnTQbfRFHBynmFiX', this)">Emotional</button>
+            <button onclick="changePlaylist('0ZAaLNP1Axcl5AhJMSivCR', this)">Towns</button>
+        </div>
+    <button class="group-title-null" onclick="toggleGroup('sileanGroup')">Feywood Silean</button>
+        <div id="sileanGroup" class="group-content">
+            <p>Coming Soon</p> 
+        </div>
+    <button class="group-title-null" onclick="toggleGroup('bloodhavenGroup')">The Pirates of Bloodhaven</button>
+        <div id="bloodhavenGroup" class="group-content">
+            <p>Coming Soon</p>
+        </div>
+    <button class="group-title-null" onclick="toggleGroup('theylmarGroup')">Prehistoric Ima Theylmar</button>
+        <div id="theylmarGroup" class="group-content">
+        <p>Coming Soon</p>
+        </div>
+    <button class="group-title-null" onclick="toggleGroup('kunaiGroup')">Frozen Wastes of Kunai</button>
+        <div id="kunaiGroup" class="group-content">
+        <p>Coming Soon</p>
+        </div>
+   <script>
+    function changePlaylist(playlistId, button) {
+        const player = document.getElementById('spotify-player');
+        player.src = `https://open.spotify.com/embed/playlist/${playlistId}?autoplay=1`;
+        
+          // Remove the active class from all buttons
+          const buttons = document.querySelectorAll('.group-content button');
+        buttons.forEach(btn => btn.classList.remove('active-button'));
+        
+         // Add the active class to the clicked button
+         button.classList.add('active-button');
+        }
+        
+        function toggleGroup(groupId) {
+            const groupContent = document.getElementById(groupId);
+            if (groupContent.style.display === "block") {
+                groupContent.style.display = "none";
+            } else {
+                groupContent.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
