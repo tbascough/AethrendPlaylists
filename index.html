@@ -56,7 +56,9 @@
         .group-content {
             display: none;
             padding-left: 10px;
+            transition: all 1.3s ease;
         }
+
         .group-content button {
             display: block;
             width: 100%;
@@ -111,6 +113,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="main">
         <h1 class="title">Set The Mood</h1>
@@ -158,6 +161,27 @@
             <button onclick="changePlaylist('5FMklSlnTQbfRFHBynmFiX', this)">Emotional</button>
             <button onclick="changePlaylist('0ZAaLNP1Axcl5AhJMSivCR', this)">Towns</button>
         </div>
+
+
+        <button class="group-title" onclick="toggleGroup('innovisGroup')">Innovis Regas</button>
+        <div id="innovisGroup" class="group-content">
+            <button onclick="changePlaylist('1WH89E5ukBUL8OoC8gJC7S', this)">The Human Kingdoms</button>
+            <button onclick="changePlaylist('66APxBSRfXt4xA5llO8MPj', this)">Up To No Good</button>
+            <button onclick="changePlaylist('3VjriWyI4ggnt95dffJJ51', this)">Ruins of a Magical City</button>
+            <button onclick="changePlaylist('5lu3OIhYaBLTGbwh21oz3w', this)">Fabricator's Folly</button>
+            <button onclick="changePlaylist('2lUkUFNK8iXDVse907A6e9', this)">Orc Wars</button>
+            <button onclick="changePlaylist('79OIhjtPHLFC2M3hCZJJXP', this)">Tragedy</button>
+
+        </div>
+        <button class="group-title" onclick="toggleGroup('skirrGroup')">Skirror Sky Dwarves</button>
+            <div id="skirrGroup" class="group-content">
+                <button onclick="changePlaylist('2roABkcEEITPuvsFfrTLGY', this)">Dwarven City</button>
+                <button onclick="changePlaylist('4gujVaSRKLu66m3AlyGkEp', this)">Holy Honor and Heroism</button>
+                <button onclick="changePlaylist('3VjriWyI4ggnt95dffJJ51', this)">Skirr Battle</button>
+                <button onclick="changePlaylist('09s4ESAb83mzIcvndiJptm', this)">Skirr Skyraces</button>
+                <button onclick="changePlaylist('6oBnowVOVIj8Y70XFsx5Qp', this)">Skirr Tension</button>    
+
+        </div>
     <button class="group-title-null" onclick="toggleGroup('sileanGroup')">Feywood Silean</button>
         <div id="sileanGroup" class="group-content">
             <p>Coming Soon</p> 
@@ -195,6 +219,7 @@
                 groupContent.style.display = "block";
             }
         }
+        
     </script>
 
 </body>
