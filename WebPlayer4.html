@@ -54,8 +54,10 @@
             border-radius: 10px;
         }
         .group-content {
-            display: none;
             padding-left: 10px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            max-height: 0; /* Start with zero height for the collapsed state */
         }
         .group-content button {
             display: block;
@@ -106,9 +108,10 @@
             margin-top: 10px;
         }
         .active-button {
-        background-color: #dfc7ae;
-        color: #172029;
+            background-color: #dfc7ae; /* Lighter color for active state */
+            color: #172029; /* Darker text color for contrast */
         }
+        
     </style>
 </head>
 <body>
@@ -175,24 +178,25 @@
         <p>Coming Soon</p>
         </div>
    <script>
-    function changePlaylist(playlistId, button) {
-        const player = document.getElementById('spotify-player');
-        player.src = `https://open.spotify.com/embed/playlist/${playlistId}?autoplay=1`;
-        
-          // Remove the active class from all buttons
-          const buttons = document.querySelectorAll('.group-content button');
-        buttons.forEach(btn => btn.classList.remove('active-button'));
-        
-         // Add the active class to the clicked button
-         button.classList.add('active-button');
+        function changePlaylist(playlistId, button) {
+            const player = document.getElementById('spotify-player');
+            player.src = `https://open.spotify.com/embed/playlist/${playlistId}?autoplay=1`;
+            
+            // Remove the active class from all buttons
+            const buttons = document.querySelectorAll('.group-content button');
+            buttons.forEach(btn => btn.classList.remove('active-button'));
+            
+            // Add the active class to the clicked button
+            button.classList.add('active-button');
         }
         
         function toggleGroup(groupId) {
             const groupContent = document.getElementById(groupId);
-            if (groupContent.style.display === "block") {
-                groupContent.style.display = "none";
+
+            if (groupContent.style.maxHeight) {
+                groupContent.style.maxHeight = null; // Collapse the menu
             } else {
-                groupContent.style.display = "block";
+                groupContent.style.maxHeight = groupContent.scrollHeight + "px"; // Expand the menu to its full height
             }
         }
     </script>
