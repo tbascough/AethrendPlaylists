@@ -7,8 +7,12 @@
     <style>
         body {
             font-family: 'Arial, sans-serif';
+            background-image: url('images/ektu.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             background-color: #1f2531;
-            color: #e1e1e1;
+            color: #1f2531;
             margin: 0;
             display: flex;
         }
@@ -18,6 +22,7 @@
             background-color: #2f4054;
             padding: 20px;
             box-sizing: border-box;
+            opacity: 0.9.01; 
         }
         .group-title {
             cursor: pointer;
@@ -35,6 +40,7 @@
             background-color: #232a37;
             text-decoration: underline;
             border-radius: 10px;
+            opacity: 100;
         }
 
         .group-title-null {
@@ -86,6 +92,8 @@
             width: 100%;
             height: 580px;
             border: none;
+            opacity: 0.905; 
+
         }
         .info-box {
         background-color: #2f4054;
@@ -97,13 +105,13 @@
         line-height: 1.5;
         font-size: 14px;
         border-radius: 10px;
+        opacity: 0.75; 
         }
         
-        /* Title Styling */
         .title {
             font-family: 'Uncial Antiqua', cursive;
             color: #dfc7ae;
-            text-align: left;
+            text-align: center;
             font-size: 56px;
             margin-bottom: 10px;
             margin-top: 10px;
@@ -142,7 +150,7 @@
             <button onclick="changePlaylist('3Delm05gkx0ZPEZu7Rk53D', this)">Sombre</button>
             <button onclick="changePlaylist('0ZAaLNP1Axcl5AhJMSivCR', this)">Towns</button>
         </div>
-    <button class="group-title" onclick="toggleGroup('greyfallCityGroup')">The City of Greyfall</button>
+    <button class="group-title" onclick="toggleGroup('greyfallCityGroup')">Greyfall City</button>
         <div id="greyfallCityGroup" class="group-content">
             <button onclick="changePlaylist('1YUe3UKAqhD7AvGfGymuWI', this)">Peaceful</button>
             <button onclick="changePlaylist('3X0IjsjrQUX4fHyQOVEnSe', this)">Tension</button>
@@ -153,50 +161,66 @@
             <button onclick="changePlaylist('00yRGLi1BXNCn1rtoAckdx', this)">Romance</button>
             <button onclick="changePlaylist('3mM5niJAb5BX18kKYH64T4', this)">Big City Boys and Girls</button>            
         </div>
-    <button class="group-title" onclick="toggleGroup('imaEktuGroup')">Desert of Ima Ektu</button>
+    <button class="group-title" onclick="toggleGroup('imaEktuGroup')">Deserts of Ima Ektu</button>
         <div id="imaEktuGroup" class="group-content">
-            <button onclick="changePlaylist('6DH4OfukW4uo4XkfBiOAV0', this)">Peaceful</button>
-            <button onclick="changePlaylist('5bQgi15PeUrROgNiZYReXu', this)">Tension</button>
-            <button onclick="changePlaylist('7aUst22qJIqBxsIMNo9ba8', this)">Combat</button>
-            <button onclick="changePlaylist('6RVAORIrWK71unKMuXM9eZ', this)">Heist</button>
-            <button onclick="changePlaylist('5FMklSlnTQbfRFHBynmFiX', this)">Emotional</button>
-            <button onclick="changePlaylist('0ZAaLNP1Axcl5AhJMSivCR', this)">Towns</button>
+            <button onclick="changePlaylist('0ZAaLNP1Axcl5AhJMSivCR', this)">Western Town - Deserts</button>
+            <button onclick="changePlaylist('5GBZtR2GPnnpurlIIH3vYE', this)">Eastern Town - Deserts</button>
+            <button onclick="changePlaylist('5bQgi15PeUrROgNiZYReXu', this)">Tension Desert</button>
+            <button onclick="changePlaylist('7aUst22qJIqBxsIMNo9ba8', this)">Combat on the Dunes</button>
+            <button onclick="changePlaylist('6RVAORIrWK71unKMuXM9eZ', this)">Heist in the Desert</button>
+            <button onclick="changePlaylist('5FMklSlnTQbfRFHBynmFiX', this)">Emotional Deserts </button>
+            <button onclick="changePlaylist('6DH4OfukW4uo4XkfBiOAV0', this)">Relaxed Deserts</button>
         </div>
-
-
-        <button class="group-title" onclick="toggleGroup('innovisGroup')">Innovis Regas</button>
-        <div id="innovisGroup" class="group-content">
-            <button onclick="changePlaylist('1WH89E5ukBUL8OoC8gJC7S', this)">The Human Kingdoms</button>
-            <button onclick="changePlaylist('66APxBSRfXt4xA5llO8MPj', this)">Up To No Good</button>
-            <button onclick="changePlaylist('5lu3OIhYaBLTGbwh21oz3w', this)">Fabricator's Folly</button>
-            <button onclick="changePlaylist('2lUkUFNK8iXDVse907A6e9', this)">Orc Wars</button>
-            <button onclick="changePlaylist('3VjriWyI4ggnt95dffJJ51', this)">Ruins of a Magical City</button>
-            <button onclick="changePlaylist('79OIhjtPHLFC2M3hCZJJXP', this)">Tragedy</button>
-
-        </div>
-        <button class="group-title" onclick="toggleGroup('skirrGroup')">Skirror Sky Dwarves</button>
+    <button class="group-title" onclick="toggleGroup('skirrGroup')">Dwarves of Skirr</button>
             <div id="skirrGroup" class="group-content">
-                <button onclick="changePlaylist('2roABkcEEITPuvsFfrTLGY', this)">Dwarven City</button>
+                <button onclick="changePlaylist('2roABkcEEITPuvsFfrTLGY', this)">Peaceful Dwarves</button>
                 <button onclick="changePlaylist('6oBnowVOVIj8Y70XFsx5Qp', this)">Tension in Skirr </button>    
-                <button onclick="changePlaylist('3VjriWyI4ggnt95dffJJ51', this)">Battles of Skirr </button>
+                <button onclick="changePlaylist('3VjriWyI4ggnt95dffJJ51', this)">Combat in the mines</button>                   
                 <button onclick="changePlaylist('09s4ESAb83mzIcvndiJptm', this)">Skyraces of Skirr</button>
                 <button onclick="changePlaylist('4gujVaSRKLu66m3AlyGkEp', this)">Honor and Heroism</button>
+            </div>
+    <button class="group-title" onclick="toggleGroup('innovisGroup')">Humans of Innovis Regas</button>
+        <div id="innovisGroup" class="group-content">
+            <button onclick="changePlaylist('1WH89E5ukBUL8OoC8gJC7S', this)">Peaceful Human Kingdoms</button>
+            <button onclick="changePlaylist('66APxBSRfXt4xA5llO8MPj', this)">Up To No Good</button>
+            <button onclick="changePlaylist('5lu3OIhYaBLTGbwh21oz3w', this)">Fabricator's Folly</button>
+            <button onclick="changePlaylist('2lUkUFNK8iXDVse907A6e9', this)">Combat, Orc Wars</button>
+            <button onclick="changePlaylist('3VjriWyI4ggnt95dffJJ51', this)">Ruins of a Magical City</button>
+            <button onclick="changePlaylist('79OIhjtPHLFC2M3hCZJJXP', this)">Tragedy</button>
+        </div>
+        <button class="group-title" onclick="toggleGroup('sileanGroup')">Feywoods, Spring in Silean </button>
+            <div id="sileanGroup" class="group-content">
+                <button onclick="changePlaylist('0qAVkaTrzmgrxMe1fpMZ6y', this)">Peaceful, Humble Town</button>
+                <button onclick="changePlaylist('43HjbR1hhkk5yPM20LUHcy', this)">Frightening Fey</button>
+                <button onclick="changePlaylist('5jKBoy2GoGpmqncpi5nftv', this)">Combat, Weird Warriors</button>
+                <button onclick="changePlaylist('612aaHTNNi94STPxAyTX6G', this)">Dreamscape</button>
+                <button onclick="changePlaylist('502ZCE35CCukztuADq4HFW', this)">Feywoods</button>
+            </div>  
+        <button class="group-title" onclick="toggleGroup('bloodhavenGroup')">Pirates of Bloodhaven </button>
+            <div id="bloodhavenGroup" class="group-content">
+                <button onclick="changePlaylist('6gkBoIVphFE9WrTVeFuqEL', this)">Peaceful, Autumn Exploration</button>
+                <button onclick="changePlaylist('66APxBSRfXt4xA5llO8MPj', this)">Tension, Horrors in the Black Valley</button>
+                <button onclick="changePlaylist('2fBrvoWWBqI2mNKDdd0KWJ', this)">Pirate's Hangout</button>
+            </div>
 
-        </div>
-    <button class="group-title-null" onclick="toggleGroup('sileanGroup')">Feywood Silean</button>
-        <div id="sileanGroup" class="group-content">
-            <p>Coming Soon</p> 
-        </div>
-    <button class="group-title-null" onclick="toggleGroup('bloodhavenGroup')">The Pirates of Bloodhaven</button>
-        <div id="bloodhavenGroup" class="group-content">
-            <p>Coming Soon</p>
-        </div>
     <button class="group-title-null" onclick="toggleGroup('theylmarGroup')">Prehistoric Ima Theylmar</button>
         <div id="theylmarGroup" class="group-content">
         <p>Coming Soon</p>
         </div>
-    <button class="group-title-null" onclick="toggleGroup('kunaiGroup')">Frozen Wastes of Kunai</button>
+    <button class="group-title-null" onclick="toggleGroup('kunaiGroup')">Far Eastern Isle Kunai</button>
         <div id="kunaiGroup" class="group-content">
+        <p>Coming Soon</p>
+        </div>
+    <button class="group-title-null" onclick="toggleGroup('wyrGroup')">Beneath the waves of Wyr's Deep</button>
+        <div id="wyrGroup" class="group-content">
+        <p>Coming Soon</p>
+        </div>
+    <button class="group-title-null" onclick="toggleGroup('alstrosGroup')">Jungles of Ima Alstros</button>
+        <div id="alstrosGroup" class="group-content">
+        <p>Coming Soon</p>
+        </div>
+    <button class="group-title-null" onclick="toggleGroup('draklanGroup')">Dragons Raor in Ima Draklan</button>
+        <div id="draklanGroup" class="group-content">
         <p>Coming Soon</p>
         </div>
    <script>
