@@ -7,22 +7,42 @@
     <style>
         body {
             font-family: 'Arial, sans-serif';
-            background-image: url('images/ektu.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #1f2531;
+            background-color: #1f2531; /* Only color here for fallback */
             color: #1f2531;
             margin: 0;
             display: flex;
+            position: relative;
         }
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+            z-index: -1; /* Place behind content */
+        }
+              
+        .fade-out {
+            opacity: 0;
+        }
+
+        .background-overlay.fade-in {
+            opacity: 1;
+            z-index: -2; /* Ensure it stays behind the fading-out overlay */
+        }
+        
         .sidebar {
             width: 1000px;
-            height: 720px;
+            height: 1000px;
             background-color: #2f4054;
             padding: 20px;
             box-sizing: border-box;
-            opacity: 0.9.01; 
+            opacity: 0.901;         
         }
         .group-title {
             cursor: pointer;
@@ -92,7 +112,7 @@
             width: 100%;
             height: 580px;
             border: none;
-            opacity: 0.905; 
+            opacity: 0.9; 
 
         }
         .info-box {
@@ -124,6 +144,8 @@
 </head>
 
 <body>
+    <div id="background-overlay" class="background-overlay"></div>
+    <div id="background-overlay-2" class="background-overlay"></div>
     <div class="main">
         <h1 class="title">Set The Mood</h1>
         <iframe id="spotify-player" class="spotify-player" src="https://open.spotify.com/embed/playlist/1YUe3UKAqhD7AvGfGymuWI?autoplay=0" allow="encrypted-media"></iframe>
@@ -223,29 +245,90 @@
         <div id="draklanGroup" class="group-content">
         <p>Coming Soon</p>
         </div>
-   <script>
-    function changePlaylist(playlistId, button) {
-        const player = document.getElementById('spotify-player');
-        player.src = `https://open.spotify.com/embed/playlist/${playlistId}?autoplay=1`;
+
+
+        <script>
+            function changePlaylist(playlistId, button) {
+                const player = document.getElementById('spotify-player');
+                player.src = `https://open.spotify.com/embed/playlist/${playlistId}?autoplay=1`;
+
+                // Remove the active class from all buttons
+                const buttons = document.querySelectorAll('.group-content button');
+                buttons.forEach(btn => btn.classList.remove('active-button'));
+
+                // Add the active class to the clicked button   
+                button.classList.add('active-button');
+
+
         
-          // Remove the active class from all buttons
-          const buttons = document.querySelectorAll('.group-content button');
-        buttons.forEach(btn => btn.classList.remove('active-button'));
+            const greyfallPlaylists = [
+                '1YUe3UKAqhD7AvGfGymuWI', '3X0IjsjrQUX4fHyQOVEnSe', '2I9OifXRFgEur2UCIuPUGf',
+                '2beWi8n7abCEGvXqp4s7N0', '7lJjhHgvGPa6VZWtVbdfkU', '35oxrKenVuLxu8CcSPWIpo',
+                '00yRGLi1BXNCn1rtoAckdx', '3mM5niJAb5BX18kKYH64T4'
+            ];
         
-         // Add the active class to the clicked button
-         button.classList.add('active-button');
-        }
+            const sileanPlaylists = [
+                '0qAVkaTrzmgrxMe1fpMZ6y', '43HjbR1hhkk5yPM20LUHcy', '5jKBoy2GoGpmqncpi5nftv',
+                '612aaHTNNi94STPxAyTX6G', '502ZCE35CCukztuADq4HFW'
+            ];
         
-        function toggleGroup(groupId) {
-            const groupContent = document.getElementById(groupId);
-            if (groupContent.style.display === "block") {
-                groupContent.style.display = "none";
+            const bloodhavenPlaylists = [
+                '6gkBoIVphFE9WrTVeFuqEL', '66APxBSRfXt4xA5llO8MPj', '2fBrvoWWBqI2mNKDdd0KWJ'
+            ];
+        
+            const innovisRegasPlaylists = [
+                '1WH89E5ukBUL8OoC8gJC7S', '66APxBSRfXt4xA5llO8MPj', '5lu3OIhYaBLTGbwh21oz3w',
+                '2lUkUFNK8iXDVse907A6e9', '3VjriWyI4ggnt95dffJJ51', '79OIhjtPHLFC2M3hCZJJXP'
+            ];
+        
+            const genericFantasyPlaylists = [
+                '1ea17K1nE7fEX70nIMjDqT', '2nbeP4Rre3m0zxYLo54QTl', '13u4gzKCd1WaevD0DtKlLD',
+                '6JmfCGjYCq5tehntG8Surq', '6qXjvqr5P7EhaMqQ79vkUg', '6gG7jdzlSyNxq4NjZ1x0oW',
+                '3Delm05gkx0ZPEZu7Rk53D', '0ZAaLNP1Axcl5AhJMSivCR'
+            ];
+        
+            const skirrPlaylists = [
+                '2roABkcEEITPuvsFfrTLGY', '6oBnowVOVIj8Y70XFsx5Qp', '3VjriWyI4ggnt95dffJJ51',
+                '09s4ESAb83mzIcvndiJptm', '4gujVaSRKLu66m3AlyGkEp'
+            ];
+        
+            // Determine the new background image URL based on the playlist group
+            const overlay = document.getElementById('background-overlay');
+            let newImage = '';
+        
+            if (greyfallPlaylists.includes(playlistId)) {
+                newImage = "url('images/4k/greyfall.png')";
+            } else if (sileanPlaylists.includes(playlistId)) {
+                newImage = "url('images/4k/silean.png')";
+            } else if (bloodhavenPlaylists.includes(playlistId)) {
+                newImage = "url('images/4k/bloodhaven.png')";
+            } else if (innovisRegasPlaylists.includes(playlistId)) {
+                newImage = "url('images/4k/innovis.png')";
+            } else if (genericFantasyPlaylists.includes(playlistId)) {
+                newImage = "url('images/4k/generic_fantasy.png')";
+            } else if (skirrPlaylists.includes(playlistId)) {
+                newImage = "url('images/4k/skirr.png')";
             } else {
-                groupContent.style.display = "block";
+                newImage = "url('images/4k/imaEktuGroup.png')"; // Default background
             }
-        }
-        
-    </script>
+            // Fade out, change image, fade back in
+            overlay.classList.add('fade-out');
+            setTimeout(() => {
+                overlay.style.backgroundImage = newImage;
+                overlay.classList.remove('fade-out');
+            }, 700); // 500ms matches the CSS transition duration
+                }
+                
+                function toggleGroup(groupId) {
+                    const groupContent = document.getElementById(groupId);
+                    if (groupContent.style.display === "block") {
+                        groupContent.style.display = "none";
+                    } else {
+                        groupContent.style.display = "block";
+                    }
+                }
+                
+        </script>
 
 </body>
 </html>
