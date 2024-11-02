@@ -108,13 +108,35 @@
             padding: 20px;
             box-sizing: border-box;
         }
-        .spotify-player {
+        .spotify-container {
+            position: relative;
             width: 100%;
             height: 580px;
-            border: none;
-            opacity: 0.9; 
-
+            overflow: hidden;
         }
+
+        .spotify-player {
+            width: 100%;
+            height: 100%;
+            border: none;
+            opacity: 1; /* Base opacity for the iframe */
+            /* Apply mask gradient */
+            mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 190%);
+        }
+        /* .play-button-overlay {
+            position: absolute;
+            top: 26.5%; 
+            right: 22px; 
+            width: 48px;
+            height: 48px;
+            background-color: rgb(255, 255, 255);/
+            border-radius: 50%;
+            transform: translateY(-50%);
+            z-index: -2; 
+            pointer-events: none;
+        } */
+        
         .info-box {
         background-color: #2f4054;
         color: #e1e1e1;
@@ -148,7 +170,11 @@
     <div id="background-overlay-2" class="background-overlay"></div>
     <div class="main">
         <h1 class="title">Set The Mood</h1>
-        <iframe id="spotify-player" class="spotify-player" src="https://open.spotify.com/embed/playlist/1YUe3UKAqhD7AvGfGymuWI?autoplay=0" allow="encrypted-media"></iframe>
+        <div class="spotify-container">
+            <div class="play-button-overlay"></div>
+            <iframe id="spotify-player" class="spotify-player" src="https://open.spotify.com/embed/playlist/1YUe3UKAqhD7AvGfGymuWI?autoplay=0" allow="encrypted-media"></iframe>
+
+        </div>
         <div class="info-box">
             <h2>Perfect Roleplay Moods for your game!</h2>
             <p>We've scoured the far realms to find music that will elevate any roleplaying game. Each playlist maintains a consistent energy and tone without being overly distracting. We've carefully avoided recognizable themes, prioritizing the work of smaller independent composers over blockbuster soundtracks and AAA game scores (though we've sprinkled in a few of our favorites for good measure ;) The playlists are sorted by themeatic locale named after similar regions in our own original DnD Wyrld.
@@ -170,7 +196,7 @@
             <button onclick="changePlaylist('6qXjvqr5P7EhaMqQ79vkUg', this)">Sky Battles</button>
             <button onclick="changePlaylist('6gG7jdzlSyNxq4NjZ1x0oW', this)">Chases</button>
             <button onclick="changePlaylist('3Delm05gkx0ZPEZu7Rk53D', this)">Sombre</button>
-            <button onclick="changePlaylist('0ZAaLNP1Axcl5AhJMSivCR', this)">Towns</button>
+            <button onclick="changePlaylist('5bQ280dpI1mNpGHNEdMmQT', this)">Towns</button>
         </div>
     <button class="group-title" onclick="toggleGroup('greyfallCityGroup')">Greyfall City</button>
         <div id="greyfallCityGroup" class="group-content">
@@ -221,7 +247,7 @@
         <button class="group-title" onclick="toggleGroup('bloodhavenGroup')">Pirates of Bloodhaven </button>
             <div id="bloodhavenGroup" class="group-content">
                 <button onclick="changePlaylist('6gkBoIVphFE9WrTVeFuqEL', this)">Peaceful, Autumn Exploration</button>
-                <button onclick="changePlaylist('66APxBSRfXt4xA5llO8MPj', this)">Tension, Horrors in the Black Valley</button>
+                <button onclick="changePlaylist('3l9LfACX0GJXHbZY1goBD9', this)">Tension, Horrors in the Black Valley</button>
                 <button onclick="changePlaylist('2fBrvoWWBqI2mNKDdd0KWJ', this)">Pirate's Hangout</button>
             </div>
 
@@ -273,7 +299,7 @@
             ];
         
             const bloodhavenPlaylists = [
-                '6gkBoIVphFE9WrTVeFuqEL', '66APxBSRfXt4xA5llO8MPj', '2fBrvoWWBqI2mNKDdd0KWJ'
+                '6gkBoIVphFE9WrTVeFuqEL', '3l9LfACX0GJXHbZY1goBD9', '2fBrvoWWBqI2mNKDdd0KWJ'
             ];
         
             const innovisRegasPlaylists = [
@@ -284,13 +310,14 @@
             const genericFantasyPlaylists = [
                 '1ea17K1nE7fEX70nIMjDqT', '2nbeP4Rre3m0zxYLo54QTl', '13u4gzKCd1WaevD0DtKlLD',
                 '6JmfCGjYCq5tehntG8Surq', '6qXjvqr5P7EhaMqQ79vkUg', '6gG7jdzlSyNxq4NjZ1x0oW',
-                '3Delm05gkx0ZPEZu7Rk53D', '0ZAaLNP1Axcl5AhJMSivCR'
+                '3Delm05gkx0ZPEZu7Rk53D',
             ];
         
             const skirrPlaylists = [
                 '2roABkcEEITPuvsFfrTLGY', '6oBnowVOVIj8Y70XFsx5Qp', '3VjriWyI4ggnt95dffJJ51',
                 '09s4ESAb83mzIcvndiJptm', '4gujVaSRKLu66m3AlyGkEp'
             ];
+            
         
             // Determine the new background image URL based on the playlist group
             const overlay = document.getElementById('background-overlay');
@@ -309,7 +336,7 @@
             } else if (skirrPlaylists.includes(playlistId)) {
                 newImage = "url('images/4k/skirr.png')";
             } else {
-                newImage = "url('images/4k/imaEktuGroup.png')"; // Default background
+                newImage = "url('images/4k/ektu.png')"; // Default background
             }
             // Fade out, change image, fade back in
             overlay.classList.add('fade-out');
