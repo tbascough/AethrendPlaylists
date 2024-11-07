@@ -124,18 +124,6 @@
             mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
             -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 190%);
         }
-        /* .play-button-overlay {
-            position: absolute;
-            top: 26.5%; 
-            right: 22px; 
-            width: 48px;
-            height: 48px;
-            background-color: rgb(255, 255, 255);/
-            border-radius: 50%;
-            transform: translateY(-50%);
-            z-index: -2; 
-            pointer-events: none;
-        } */
         
         .info-box {
         background-color: #2f4054;
@@ -361,6 +349,26 @@
                     }
                 }
                 
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // List of all image URLs to preload
+                const backgroundImages = [
+                    'images/4k/greyfall.png',
+                    'images/4k/silean.png',
+                    'images/4k/bloodhaven.png',
+                    'images/4k/innovis.png',
+                    'images/4k/generic_fantasy.png',
+                    'images/4k/skirr.png',
+                    'images/4k/ektu.png' // Default image
+                ];
+        
+                // Preload images
+                backgroundImages.forEach(imageUrl => {
+                    const img = new Image();
+                    img.src = imageUrl;
+                });
+            });
         </script>
 
 </body>
